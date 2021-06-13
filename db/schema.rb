@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_13_141154) do
+ActiveRecord::Schema.define(version: 2021_06_13_152702) do
 
   create_table "bulletins", force: :cascade do |t|
     t.string "title"
@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 2021_06_13_141154) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "bulletin_id"
+    t.index ["bulletin_id"], name: "index_posts_on_bulletin_id"
   end
 
+  add_foreign_key "posts", "bulletins"
 end
